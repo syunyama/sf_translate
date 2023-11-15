@@ -8,6 +8,11 @@ This tool is used to translate file for 3 types below.
 ## Supported Translator
 - [DeepL](https://www.deepl.com/translator)
 
+## Install dependencies
+```
+pip3 install -r requirements.txt
+```
+
 ## Utilize
 ### Make command in local
 ```sh
