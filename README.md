@@ -87,7 +87,7 @@ if __name__ == "__main__":
 - Supporting Googole translator.
 
 ## Notes
-- Some non pure string value like JSON or HTML and so on can not be translated properly.
+- Some non pure string value like JSON, HTML and so on can not be translated properly.
 
 
 
