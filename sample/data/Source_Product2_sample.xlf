@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2">
+    <file original="Salesforce" translation-type="data" datatype="xml">
+        <body>
+
+            <trans-unit id="Product2.01t5h000009nh0HAAQ.Description" maxwidth="4000"
+                fieldType="MultiLineText" size-unit="char">
+                <source>風力タービンギアボックス</source>
+            </trans-unit>
+
+            <trans-unit id="Product2.01t5h000009nh0HAAQ.Name" maxwidth="255" fieldType="Text"
+                size-unit="char">
+                <source>ギアボックス</source>
+            </trans-unit>
+
+        </body>
+    </file>
+</xliff>

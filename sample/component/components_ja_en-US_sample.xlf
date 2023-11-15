@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="ja" trgLang="en-US"
+      xmlns:fs="urn:oasis:names:tc:xliff:fs:2.0">
+      <file id="246d904a-4d0d-4bc9-b898-02cbcbee8376">
+            <group name="719e19f3-ac93-4ad2-a7aa-e1668a5be1a0">
+                  <group name="AuraAttributes">
+                        <unit name="text">
+                              <segment>
+                                    <source>注文履歴</source>
+                                    <target></target>
+                              </segment>
+                        </unit>
+                  </group>
+            </group>
+            <group name="4a7c5940-2a32-40f0-925c-1127f951beda">
+                  <group name="AuraAttributes">
+                        <unit name="noResultsText">
+                              <segment>
+                                    <source>テスト</source>
+                                    <target></target>
+                              </segment>
+                        </unit>
+                        <unit name="orderSummaryFieldMapping">
+                              <segment>
+                                    <source>[{"entity":"OrderSummary","name":"Id","label":"注文番号","type":"Lookup()"},{"entity":"OrderSummary","name":"OrderedDate","label":"注文日","type":"Date/Time"},{"entity":"OrderSummary","name":"Status","label":"状況","type":"Picklist"},{"entity":"OrderSummary","name":"GrandTotalAmount","label":"合計","type":"Formula
+                                          (Currency)"}]</source>
+                                    <target></target>
+                              </segment>
+                        </unit>
+                  </group>
+            </group>
+      </file>
+</xliff>
