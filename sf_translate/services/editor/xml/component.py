@@ -3,12 +3,20 @@ from sf_translate.services.xml import ComponentXML
 from sf_translate.data import TranslateChunk
 from sf_translate.services.translator import ITranslator
 from sf_translate.services.editor import IEditor
+from sf_translate.constants import MAX_WORKERS
 
 
-class ComponentEditor(IEditor):
-    def __init__(self, translator: ITranslator, xml_input_path, xml_output_path):
+class ComponentXMLEditor(IEditor):
+    def __init__(
+        self,
+        translator: ITranslator,
+        input_path,
+        output_path,
+        max_workers=MAX_WORKERS,
+    ):
         self._translator = translator
-        self._xml = ComponentXML(xml_input_path, xml_output_path)
+        self._xml = ComponentXML(input_path, output_path)
+        self._max_workers = max_workers
 
     def _edit(self, chunk: TranslateChunk):
         target = chunk.chunk.find(".//{urn:oasis:names:tc:xliff:document:2.0}target")
@@ -19,7 +27,7 @@ class ComponentEditor(IEditor):
         target.text = translated_text
 
     def translate(self):
-        with ThreadPoolExecutor(max_workers=10) as executor:
+        with ThreadPoolExecutor(max_workers=self._max_workers) as executor:
             futures = [
                 executor.submit(self._edit, chunk) for chunk in self._xml.get_chunks()
             ]

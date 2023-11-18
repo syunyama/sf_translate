@@ -3,7 +3,8 @@ SALESFORCE_SUPPORTED_LANGUAGES = [
     "ja",
     "ko",
     "zh_CN",
-    "zh_TW" "da",
+    "zh_TW",
+    "da",
     "nl_NL",
     "fi",
     "fr",
@@ -17,4 +18,12 @@ SALESFORCE_SUPPORTED_LANGUAGES = [
     "ru",
     "th",
 ]
-SUPPOTED_TRANSLATORS = ["deepl"]
+SUPPOTED_TRANSLATORS = ["deepl", "google"]
+MAX_WORKERS = 10
+TRANSLATE_TYPE = [
+    "xml:component",
+    "xml:data",
+    "xml:label",
+    "xml:label_convert",
+    "property:basic",
+]

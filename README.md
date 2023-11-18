@@ -1,12 +1,15 @@
 # Salesforce Translator
 
 This tool is used to translate file for 3 types below.
-1. [Export Data Translation Files](https://help.salesforce.com/s/articleView?id=sf.workbench_export_data.htm&type=5) (data)
-1. [Localize Store Labels](https://help.salesforce.com/s/articleView?id=sf.comm_translate_store_labels_manually.htm&type=5) (component) 
-1. Translate metadata file from [CustomLabels](https://developer.salesforce.com/docs/atlas.en-us.244.0.api_meta.meta/api_meta/meta_customlabels.htm) to [Translations](https://developer.salesforce.com/docs/atlas.en-us.244.0.api_meta.meta/api_meta/meta_translations.htm) (label)
+1. [Export Data Translation Files](https://help.salesforce.com/s/articleView?id=sf.workbench_export_data.htm&type=5) (xml:data)
+1. [Localize Store Labels](https://help.salesforce.com/s/articleView?id=sf.comm_translate_store_labels_manually.htm&type=5) (xml:component) 
+1. Translate metadata file from [CustomLabels](https://developer.salesforce.com/docs/atlas.en-us.244.0.api_meta.meta/api_meta/meta_customlabels.htm) to [Translations](https://developer.salesforce.com/docs/atlas.en-us.244.0.api_meta.meta/api_meta/meta_translations.htm) (xml:label)
+1. Translate [Translations](https://developer.salesforce.com/docs/atlas.en-us.244.0.api_meta.meta/api_meta/meta_translations.htm) files to another language (xml:label_convert)
+1. Translate property file like [SFRA template localization](https://developer.salesforce.com/docs/commerce/b2c-commerce/guide/b2c-localization.html'#using-one-template-set-to-localize) (property:basic)
 
 ## Supported Translator
 - [DeepL](https://www.deepl.com/translator)
+- [Google Cloud](https://cloud.google.com/translate/docs/reference/rest/v2/translate)
 
 ## Install dependencies
 ```
@@ -34,48 +37,56 @@ pip3 install -e .
 pip3 uninstall sf_translate
 ```
 
+## Basic usage
+```
+python3 command.py {arguments}
+```
+OR if you already utilized as command
+```
+sf_translate {arguments}
+```
+
 ## Commands
-
-### Command for data type
+### For data type
 ```sh
-python3 command.py data -i sample/data/Source_Product2_sample.xlf -o sample/data/RESULT_Source_Product2_sample.xlf -tl en_US -sl ja -k {deepl key}
-```
-OR if you like installed command
-```sh
-sf_translate data -i sample/data/Source_Product2_sample.xlf -o sample/data/RESULT_Source_Product2_sample.xlf -tl en_US -sl ja -k {deepl key}
+sf_translate xml:data -i sample/data/Source_Product2_sample.xlf -o sample/result/RESULT_Source_Product2_sample.xlf -tl en_US -sl ja -k {api key}
 ```
 
-### Command for component type
+### For component type
 ```sh
-python3 command.py component -i sample/component/components_ja_en-US_sample.xlf -o sample/component/RESULT_components_ja_en-US_sample.xlf -k {deepl key}
-```
-OR if you like installed command
-```sh
-sf_translate component -i sample/component/components_ja_en-US_sample.xlf -o sample/component/RESULT_components_ja_en-US_sample.xlf -k {deepl key}
+sf_translate xml:component -i sample/component/components_ja_en-US_sample.xlf -o sample/result/RESULT_components_ja_en-US_sample.xlf -k {api key}
 ```
 
-### Command for label type
+### For label type
 ```sh
-python3 command.py label -i sample/label/CustomLabels.labels-meta.xml -o sample/label/ja.translation-meta.xml -tl ja -k {deepl key}
+sf_translate xml:label -i sample/label/CustomLabels.labels-meta.xml -o sample/result/ja.translation-meta.xml -tl ja -k {api key}
 ```
-OR if you like installed command
+
+### For label convert type
 ```sh
-sf_translate label -i sample/label/CustomLabels.labels-meta.xml -o sample/label/ja.translation-meta.xml -tl ja -k {deepl key}
+sf_translate xml:label_convert -i sample/label_convert/ja.translation-meta.xml -o sample/result/ko.translation-meta.xml -tl ko -k {api key}
+```
+
+### For property type
+```sh
+sf_translate property:basic -i sample/property/account.properties -o sample/result/address_ja_JP.properties -tl ja -k {api key}
 ```
 
 ## Use as Python library
 ```python
 import os
-from sf_translate.services.translator import DeepLTranslator
-from sf_translate.services.editor import LabelEditor
+from sf_translate.services.translator import DeepLTranslator, GoogleTranslator
+from sf_translate.services.editor import LabelXMLEditor
 
 
 def main():
     translator = DeepLTranslator("Your DeepL API Key")
-    editor = LabelEditor(
+    # OR
+    # translator = GoogleTranslator("Your Google Cloud API Key")
+    editor = LabelXMLEditor(
         translator = translator,
-        xml_input_path = os.path.abspath("sample/label/CustomLabels.labels-meta.xml"),
-        xml_output_path = os.path.abspath("sample/label/ja.translation-meta.xml"),
+        input_path = os.path.abspath("sample/label/CustomLabels.labels-meta.xml"),
+        output_path = os.path.abspath("sample/label/ja.translation-meta.xml"),
         target_lang = "ja",
         source_lang="en_US",
     )
@@ -86,10 +97,6 @@ if __name__ == "__main__":
     main()
 
 ```
-
-## Roadmap (Hopefully)
-- Translating `Translations` meta data to another language.
-- Supporting Googole translator.
 
 ## Notes
 - Some non pure string value like JSON, HTML and so on can not be translated properly.
