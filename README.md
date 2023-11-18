@@ -9,7 +9,9 @@ This tool is used to translate file for 3 types below.
 
 ## Supported Translator
 - [DeepL](https://www.deepl.com/translator)
+    - Get API Key following [this instruction](https://support.deepl.com/hc/en-us/articles/360020695820-Authentication-Key)
 - [Google Cloud](https://cloud.google.com/translate/docs/reference/rest/v2/translate)
+    -  Get API Key following [this instruction](https://cloud.google.com/docs/authentication/api-keys?hl=ja#create)
 
 ## Install dependencies
 ```
