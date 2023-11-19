@@ -1,4 +1,4 @@
-# Salesforce Translator
+# Salesforce Translate
 
 This tool is used to translate file for 3 types below.
 1. [Export Data Translation Files](https://help.salesforce.com/s/articleView?id=sf.workbench_export_data.htm&type=5) (xml:data)
