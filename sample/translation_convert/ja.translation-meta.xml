@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Translations xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customLabels>
+        <name>FormName</name>
+        <label>名前</label>
+    </customLabels>
+    <customLabels>
+        <name>Reorder</name>
+        <label>再び注文する</label>
+    </customLabels>
+    <flowDefinitions>
+        <fullName>Cancel_Item_Flow</fullName>
+        <flows>
+            <label>商品のキャンセル</label>
+        </flows>
+    </flowDefinitions>
+    <flowDefinitions>
+        <fullName>Return_Item_Flow</fullName>
+        <flows>
+            <label>商品の返品</label>
+        </flows>
+    </flowDefinitions>
+</Translations>

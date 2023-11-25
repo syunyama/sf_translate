@@ -2,5 +2,8 @@
     "editor.defaultFormatter": "ms-python.black-formatter",
     "[python]": {
         "editor.defaultFormatter": "ms-python.black-formatter"
+    },
+    "[xml]": {
+        "editor.defaultFormatter": "redhat.vscode-xml"
     }
 }

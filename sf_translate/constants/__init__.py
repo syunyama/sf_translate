@@ -24,8 +24,8 @@ TRANSLATE_TYPE = [
     "xml:component",
     "xml:data",
     "xml:label",
-    "xml:label_convert",
     "xml:standard_value",
     "xml:standard_value_convert",
+    "xml:translation_convert",
     "property:basic",
 ]
