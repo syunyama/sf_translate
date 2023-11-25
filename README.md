@@ -6,6 +6,7 @@ This tool is used to translate file for 3 types below.
 1. Translate metadata file from [CustomLabels](https://developer.salesforce.com/docs/atlas.en-us.244.0.api_meta.meta/api_meta/meta_customlabels.htm) to [Translations](https://developer.salesforce.com/docs/atlas.en-us.244.0.api_meta.meta/api_meta/meta_translations.htm) (xml:label)
 1. Translate [Translations](https://developer.salesforce.com/docs/atlas.en-us.244.0.api_meta.meta/api_meta/meta_translations.htm) files to another language (xml:label_convert)
 1. Translate metadata file from [StandardValueSet](https://developer.salesforce.com/docs/atlas.en-us.244.0.api_meta.meta/api_meta/meta_standardvalueset.htm) to [StandardValueSetTranslation](https://developer.salesforce.com/docs/atlas.en-us.api_meta.meta/api_meta/meta_standardvaluesettranslation.htm) (xml:standard_value)
+1. Translate [StandardValueSetTranslation](https://developer.salesforce.com/docs/atlas.en-us.api_meta.meta/api_meta/meta_standardvaluesettranslation.htm) files to another language (xml:standard_value_convert)
 1. Translate property file like [SFRA template localization](https://developer.salesforce.com/docs/commerce/b2c-commerce/guide/b2c-localization.html'#using-one-template-set-to-localize) (property:basic)
 
 ## Supported Translator
@@ -73,6 +74,11 @@ sf_translate xml:label_convert -i sample/label_convert/ja.translation-meta.xml -
 ### For standard value
 ```sh
 sf_translate xml:standard_value -i sample/standardValue/LeadSource.standardValueSet-meta.xml -o sample/result/LeadSource-ko.standardValueSetTranslation-meta.xml -tl ko -k {api key}
+```
+
+### For standard value convert
+```sh
+sf_translate xml:standard_value_convert -i sample/result/LeadSource-ja.standardValueSetTranslation-meta.xml -o sample/result/LeadSource-ko.standardValueSetTranslation-meta.xml -tl ko -k {api key}
 ```
 
 ### For property type

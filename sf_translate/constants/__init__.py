@@ -26,5 +26,6 @@ TRANSLATE_TYPE = [
     "xml:label",
     "xml:label_convert",
     "xml:standard_value",
+    "xml:standard_value_convert",
     "property:basic",
 ]

@@ -7,6 +7,7 @@ from sf_translate.services.editor import (
     LabelXMLEditor,
     LabelConvertXMLEditor,
     StandardValueXMLEditor,
+    StandardValueConvertXMLEditor,
     PropertyEditor,
 )
 from sf_translate.constants import (
@@ -118,6 +119,19 @@ def _get_editor(option, translator):
                 "Target and source languages are required for data translation"
             )
         return StandardValueXMLEditor(
+            translator,
+            os.path.abspath(option.input),
+            os.path.abspath(option.output),
+            option.target_lang,
+            source_lang=option.source_lang,
+            max_workers=option.max_workers,
+        )
+    elif option.type == "xml:standard_value_convert":
+        if not option.target_lang:
+            raise ValueError(
+                "Target and source languages are required for data translation"
+            )
+        return StandardValueConvertXMLEditor(
             translator,
             os.path.abspath(option.input),
             os.path.abspath(option.output),
