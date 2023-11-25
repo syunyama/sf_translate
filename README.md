@@ -5,6 +5,7 @@ This tool is used to translate file for 3 types below.
 1. [Localize Store Labels](https://help.salesforce.com/s/articleView?id=sf.comm_translate_store_labels_manually.htm&type=5) (xml:component) 
 1. Translate metadata file from [CustomLabels](https://developer.salesforce.com/docs/atlas.en-us.244.0.api_meta.meta/api_meta/meta_customlabels.htm) to [Translations](https://developer.salesforce.com/docs/atlas.en-us.244.0.api_meta.meta/api_meta/meta_translations.htm) (xml:label)
 1. Translate [Translations](https://developer.salesforce.com/docs/atlas.en-us.244.0.api_meta.meta/api_meta/meta_translations.htm) files to another language (xml:label_convert)
+1. Translate metadata file from [StandardValueSet](https://developer.salesforce.com/docs/atlas.en-us.244.0.api_meta.meta/api_meta/meta_standardvalueset.htm) to [StandardValueSetTranslation](https://developer.salesforce.com/docs/atlas.en-us.api_meta.meta/api_meta/meta_standardvaluesettranslation.htm) (xml:standard_value)
 1. Translate property file like [SFRA template localization](https://developer.salesforce.com/docs/commerce/b2c-commerce/guide/b2c-localization.html'#using-one-template-set-to-localize) (property:basic)
 
 ## Supported Translator
@@ -67,6 +68,11 @@ sf_translate xml:label -i sample/label/CustomLabels.labels-meta.xml -o sample/re
 ### For label convert type
 ```sh
 sf_translate xml:label_convert -i sample/label_convert/ja.translation-meta.xml -o sample/result/ko.translation-meta.xml -tl ko -k {api key}
+```
+
+### For standard value
+```sh
+sf_translate xml:standard_value -i sample/standardValue/LeadSource.standardValueSet-meta.xml -o sample/result/LeadSource-ko.standardValueSetTranslation-meta.xml -tl ko -k {api key}
 ```
 
 ### For property type
